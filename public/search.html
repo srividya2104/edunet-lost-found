@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Items - Lost & Found</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-search-location"></i>
+                <span>Lost & Found</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/report" class="nav-link">Report Item</a>
+                <a href="/search" class="nav-link active">Search Items</a>
+            </div>
+            <div class="nav-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-header">
+                <h1>Search Lost & Found Items</h1>
+                <p>Find your lost items or help return found items to their owners</p>
+            </div>
+
+            <!-- Search Filters -->
+            <div class="search-filters">
+                <div class="filter-row">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by title, description, or location..." />
+                    </div>
+                    <button class="filter-toggle" id="filterToggle">
+                        <i class="fas fa-filter"></i>
+                        Filters
+                    </button>
+                </div>
+                
+                <div class="advanced-filters" id="advancedFilters">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="status" data-value="">All</button>
+                            <button class="filter-btn" data-filter="status" data-value="lost">Lost</button>
+                            <button class="filter-btn" data-filter="status" data-value="found">Found</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Documents">Documents</option>
+                            <option value="Keys">Keys</option>
+                            <option value="Bags">Bags</option>
+                            <option value="Books">Books</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select id="sortFilter">
+                            <option value="dateReported">Most Recent</option>
+                            <option value="title">Title A-Z</option>
+                            <option value="category">Category</option>
+                            <option value="location">Location</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="search-results">
+                <div class="results-header">
+                    <div class="results-count">
+                        <span id="resultsCount">0</span> items found
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="items-container">
+                    <div class="items-grid" id="itemsGrid">
+                        <!-- Items will be loaded here -->
+                    </div>
+                    <div class="loading" id="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Searching for items...</p>
+                    </div>
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No items found</h3>
+                        <p>Try adjusting your search criteria or check back later.</p>
+                        <a href="/report" class="btn btn-primary">Report an Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Item Detail Modal -->
+    <div class="modal" id="itemModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Item details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="search.js"></script>
+</body>
+</html>
